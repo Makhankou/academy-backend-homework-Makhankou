@@ -1,9 +1,12 @@
 import java.math.BigDecimal;
 
-/** The fixed price table. Not instantiable — a static lookup. */
+/**
+ * The fixed price table. Not instantiable, but a static lookup.
+ */
 public class PriceList {
 
-    private PriceList() { }   // no instances
+    private PriceList() {
+    }   // no instances
 
     public static BigDecimal priceFor(Provider provider, Size size) {
         return switch (provider) {
@@ -20,9 +23,10 @@ public class PriceList {
         };
     }
 
-    // Lowest S price across providers — a fact about the table, computed once.
+    // Lowest S price across providers, computed once.
     public static final BigDecimal LOWEST_S_PRICE = lowestPriceForSize(Size.S);
 
+    // Lowest price across providers for a selected size
     private static BigDecimal lowestPriceForSize(Size size) {
         BigDecimal lowest = null;
         for (Provider provider : Provider.values()) {

@@ -1,6 +1,17 @@
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * One parsed line of input. Fields may be null when a token was missing or
+ * unparseable — a Transaction is built even for malformed lines, and whether it
+ * is usable is decided separately by isValid().
+ *
+ * @param date         the shipment date, or null if that token was missing/invalid
+ * @param size         the parcel size, or null if missing/invalid
+ * @param provider     the shipping provider, or null if missing/invalid
+ * @param raw          the original line, kept so malformed lines can be echoed back
+ * @param tooManyParts true when the line had more than the three expected tokens
+ */
 public record Transaction(LocalDate date, Size size, Provider provider, String raw, boolean tooManyParts) {
 
     // Build a Transaction from one raw line
@@ -18,7 +29,7 @@ public record Transaction(LocalDate date, Size size, Provider provider, String r
         return !tooManyParts && date != null && size != null && provider != null;
     }
 
-    // Base price straight from the table
+    // The list price for this provider and size, before any discount rules
     public BigDecimal basePrice() {
         return PriceList.priceFor(provider, size);
     }

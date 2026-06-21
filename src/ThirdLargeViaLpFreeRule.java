@@ -3,7 +3,9 @@ import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Rule 2: the 3rd L shipment via LP each calendar month is free. */
+/**
+ * Rule 2: the 3rd L shipment via LP each calendar month is free.
+ */
 public class ThirdLargeViaLpFreeRule implements PricingRule {
     private final Map<YearMonth, Integer> lpLargeCounts = new HashMap<>();
 
