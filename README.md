@@ -154,26 +154,17 @@ The program reads from the path given as the first argument, defaulting to
 `example/input.txt`. If the file does not exist, it prints an error instead of
 crashing.
 
-### IntelliJ IDEA
-
-Open the project and run `Main`. To use a particular input file, set it as a
-**Program argument** in the run configuration (for example `example/input.txt`).
-
 ### Terminal
 
 ```bash
 # from the project root
-javac -d build src/*.java
-java -cp build Main example/input.txt
+javac -d out/production/academy-backend-homework-Makhankou src/*.java
+java -cp out/production/academy-backend-homework-Makhankou Main example/input.txt
 ```
 
 ## Running the tests
 
-The tests are written with **JUnit 5**.
-
-### IntelliJ IDEA
-
-Right-click the `test` folder (or an individual test class) and choose **Run**.
+The tests are written with **JUnit 5**.git
 
 ### Terminal
 
