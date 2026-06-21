@@ -177,12 +177,14 @@ curl -L -o lib/junit-console.jar \
   https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.11.3/junit-platform-console-standalone-1.11.3.jar
 
 # compile production code, then the tests
-mkdir -p build
-javac -d build src/*.java
-javac -cp "lib/junit-console.jar:build" -d build test/*.java
+javac -d out/production/academy-backend-homework-Makhankou src/*.java
+javac -cp "lib/junit-console.jar:out/production/academy-backend-homework-Makhankou" \
+  -d out/test/academy-backend-homework-Makhankou test/*.java
 
-# run every test
-java -jar lib/junit-console.jar execute --class-path build --scan-classpath
+# run all tests
+java -jar lib/junit-console.jar execute \
+  --class-path "out/production/academy-backend-homework-Makhankou:out/test/academy-backend-homework-Makhankou" \
+  --scan-classpath
 ```
 
 (On Windows, use `;` instead of `:` as the classpath separator.)
